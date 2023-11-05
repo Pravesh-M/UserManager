@@ -13,29 +13,29 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @PostMapping
+    @PostMapping("/add")
     public User createUser(@RequestBody User user) {
         return service.createUser(user);
     }
 
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return service.getUserById(id);
+    @GetMapping("get/{userId}")
+    public User getUser(@PathVariable Long userId) {
+        return service.getUserById(userId);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<User> getAllUsers() {
         return service.getAllUsers();
     }
 
-    @PutMapping("/{id}")
-    public void updateUser(@PathVariable Long id, @RequestBody User user) {
-        service.updateUser(user);
+    @PutMapping("update/{userId}")
+    public void updateUser(@PathVariable Long userId, @RequestBody User user) {
+        service.updateUser(user,userId);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        service.deleteUser(id);
+    @DeleteMapping("delete/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        service.deleteUser(userId);
     }
 }
 
